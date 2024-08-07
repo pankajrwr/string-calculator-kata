@@ -26,6 +26,8 @@ describe("Calculator Module", () => {
   });
 
   test("it should throw exception displaying list of negative numbers when a string containing negative numbers is passed", () => {
-    expect(stringCalculator("1,-2")).toBe("negative numbers not allowed -2");
+    expect(() => {
+      stringCalculator("1,-2");
+    }).toThrow("negative numbers not allowed -2");
   });
 });
