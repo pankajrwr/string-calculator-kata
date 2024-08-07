@@ -1,0 +1,14 @@
+{
+  "name": "string-calculator-kata",
+  "version": "1.0.0",
+  "description": "String Calculator Kata",
+  "main": "src/calculator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Pankaj Kumar Khatawala",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
