@@ -3,7 +3,7 @@ function stringCalculator(input) {
     return 0;
   }
 
-  const numberArray = input.split(",");
+  const numberArray = input.replace('\n', ',').split(",");
 
   const sum = numberArray.reduce(
     (sum, currentValue) => sum + parseInt(currentValue),
