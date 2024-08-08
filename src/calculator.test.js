@@ -30,4 +30,21 @@ describe("Calculator Module", () => {
       stringCalculator("1,-2");
     }).toThrow("negative numbers not allowed -2");
   });
+
+  // Additional Tests
+  test("it should ignore the numbers greater than 1000 when a string of any amount of comma separated numbers is passed", () => {
+    expect(stringCalculator("2,1001")).toBe(2);
+  });
+
+  test("it should return sum of all the numbers when a string of numbers separated by repeating special delimeters is passed", () => {
+    expect(stringCalculator("//[***]\n1***2***3")).toBe(6);
+  });
+
+  test("it should return sum of all the numbers when a string of numbers separated by multiple special delimeters is passed", () => {
+    expect(stringCalculator("//[*][%]\n1*2%3")).toBe(6);
+  });
+
+  test("it should return sum of all the numbers when a string of numbers separated by multiple repeating special delimeters is passed", () => {
+    expect(stringCalculator("//[***][%%%]\n1***2%%%3")).toBe(6);
+  });
 });
