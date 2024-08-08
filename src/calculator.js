@@ -10,7 +10,7 @@ function stringCalculator(input) {
      * Because this whole pattern will be at the start of the string, the char at index 2 will give us the delimeter
      * And the remaining part of the input after the pattern will give us our actual input we need to operate on
      */
-    delimeter = input.charAt(2);
+    delimeter = getDelimeter(input);
     input = input.substring(input.indexOf("\n") + 1);
   } else {
     // By default we will consider comma as our delimeter
@@ -35,6 +35,15 @@ function stringCalculator(input) {
   }, 0);
 
   return sum;
+}
+
+function getDelimeter(input) {
+
+    let delimeter = input.substring(2, input.indexOf("\n"));
+    if (delimeter.startsWith("[")) {
+        delimeter = delimeter.substring(1, delimeter.indexOf("]"));
+    }
+    return delimeter;
 }
 
 module.exports = stringCalculator;
