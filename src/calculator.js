@@ -19,6 +19,12 @@ function stringCalculator(input) {
     input = input.replace("\n", ",");
   }
 
+  if (Array.isArray(delimeter)) {
+    delimeter.forEach((val) => {
+      input = input.split(val).join(",");
+    });
+    delimeter = ",";
+  }
   const numberArray = input.split(delimeter);
 
   const negativeNumbers = numberArray.filter((num) => num < 0);
@@ -38,12 +44,11 @@ function stringCalculator(input) {
 }
 
 function getDelimeter(input) {
-
-    let delimeter = input.substring(2, input.indexOf("\n"));
-    if (delimeter.startsWith("[")) {
-        delimeter = delimeter.substring(1, delimeter.indexOf("]"));
-    }
-    return delimeter;
+  let delimeters = input.substring(2, input.indexOf("\n"));
+  if (delimeters.startsWith("[")) {
+    delimeters = delimeters.slice(1, -1).split("][");
+  }
+  return delimeters;
 }
 
 module.exports = stringCalculator;
