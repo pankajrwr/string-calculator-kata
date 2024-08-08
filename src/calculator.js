@@ -21,15 +21,18 @@ function stringCalculator(input) {
 
   const numberArray = input.split(delimeter);
 
-  const negativeNumbers = numberArray.filter((num) => num < 0 );
+  const negativeNumbers = numberArray.filter((num) => num < 0);
   if (negativeNumbers.length) {
-    throw new Error("negative numbers not allowed " + negativeNumbers.join(","));
+    throw new Error(
+      "negative numbers not allowed " + negativeNumbers.join(",")
+    );
   }
 
-  const sum = numberArray.reduce(
-    (sum, currentValue) => sum + parseInt(currentValue),
-    0
-  );
+  const sum = numberArray.reduce((sum, currentValue) => {
+    // don't add if value is greater than 1000
+    currentValue = parseInt(currentValue) > 1000 ? 0 : parseInt(currentValue);
+    return sum + currentValue;
+  }, 0);
 
   return sum;
 }
